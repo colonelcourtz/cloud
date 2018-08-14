@@ -1,0 +1,15 @@
+<!-- Include the Chart-->
+<br>
+<div *ngIf="chart">
+
+  <h2 *ngIf="value; else elseBlock">{{value.name}}</h2>
+  <ng-template #elseBlock><h2>All Gateways</h2></ng-template>
+
+  <select [(ngModel)]="value" (change)="updateDataSource()" class="float-right">
+    <option [ngValue]="undefined" selected>All Gateways</option>
+    <option *ngFor="let gateway of gateways" [ngValue]="gateway">{{gateway.name}}</option>
+  </select>
+
+  <canvas id="canvas">{{ chart }}</canvas>
+</div>
+
